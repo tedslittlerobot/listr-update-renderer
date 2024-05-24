@@ -45,7 +45,7 @@ const renderHelper = (tasks, options, level) => {
 };
 
 const render = (tasks, options) => {
-	logUpdate(renderHelper(tasks, options));
+	logUpdate.create(options.stream)(renderHelper(tasks, options));
 };
 
 class UpdateRenderer {
@@ -54,7 +54,8 @@ class UpdateRenderer {
 		this._options = Object.assign({
 			showSubtasks: true,
 			collapse: true,
-			clearOutput: false
+			clearOutput: false,
+			stream: process.stdout
 		}, options);
 	}
 
